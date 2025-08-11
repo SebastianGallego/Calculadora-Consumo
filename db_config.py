@@ -1,14 +1,30 @@
-# Configuracion de la DB
-
-
 # db_config.py
 import os
-from google.cloud import firestore
-from utils.credenciales import preparar_credenciales_google
+import tempfile
+import firebase_admin
+from firebase_admin import credentials, firestore
 
-# prepara credenciales al importar el módulo
-preparar_credenciales_google()
 
-# crea el cliente Firestore (usa el project de la env var si está)
-_project = os.getenv("FIREBASE_PROJECT_ID")
-db = firestore.Client(project=_project) if _project else firestore.Client()
+def preparar_credenciales_google():
+    """Crea archivo temporal desde la env var GOOGLE_CREDENTIALS_JSON"""
+    creds_json = os.getenv("GOOGLE_CREDENTIALS_JSON")
+    if not creds_json:
+        raise RuntimeError("Falta la variable de entorno GOOGLE_CREDENTIALS_JSON")
+
+    tmp = tempfile.NamedTemporaryFile(delete=False, suffix=".json")
+    tmp.write(creds_json.encode("utf-8"))
+    tmp.flush()
+    tmp.close()
+    return tmp.name
+
+
+# Crear el archivo temporal
+cred_path = preparar_credenciales_google()
+
+# Inicializar Firebase Admin con ese archivo
+if not firebase_admin._apps:
+    cred = credentials.Certificate(cred_path)
+    firebase_admin.initialize_app(cred)
+
+# Cliente Firestore listo para usar
+db = firestore.client()
