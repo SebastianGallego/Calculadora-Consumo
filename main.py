@@ -7,6 +7,7 @@ from ui.resultados import vista_resultado_total
 from ui.listado_view import vista_resultados
 from login import login_google_automatico
 from session import session
+import os
 
 
 def envolver_contenido(controles, ruta="/"):
@@ -110,9 +111,10 @@ def main(page: ft.Page):
 
 
 if __name__ == "__main__":
-    ft.app(
-        target=main,
-        view=ft.WEB_BROWSER,  # o FLET_APP si preferís escritorio
-    )
+    # Render/Fly/Railway exponen el puerto en la var PORT
+    port = int(os.getenv("PORT", "8000"))
+    # AppView puede variar según versión de flet
+    view = getattr(ft.AppView, "WEB_BROWSER", ft.WEB_BROWSER)
+    ft.app(target=main, view=view, host="0.0.0.0", port=port)
 
 # Prueba de web app
