@@ -1,12 +1,14 @@
 # Configuracion de la DB
 
 
-import firebase_admin
-from firebase_admin import credentials, firestore
-from config import RUTA
+# db_config.py
+import os
+from google.cloud import firestore
+from utils.credenciales import preparar_credenciales_google
 
-# === Configuración Firebase y Google OAuth ===
-cred = credentials.Certificate(RUTA)
-firebase_admin.initialize_app(cred)
-db = firestore.client()
+# prepara credenciales al importar el módulo
+preparar_credenciales_google()
 
+# crea el cliente Firestore (usa el project de la env var si está)
+_project = os.getenv("FIREBASE_PROJECT_ID")
+db = firestore.Client(project=_project) if _project else firestore.Client()
