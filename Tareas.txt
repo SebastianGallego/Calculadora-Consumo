@@ -1,0 +1,87 @@
+Tareas para ir completando.
+
+
+📌 - Sacar login para que no lo pida siempre ✅
+
+📌 - Crear un archivo de configuracion config.py ✅
+
+📌 - Para Calcular consumo tiene que haber seleccionada una provincia ✅
+
+📌 - Cargar el desplegable de provincias de una lista ✅
+
+📌 - Boton de volver en cada pagina  ✅
+
+📌 - /ui  Todas las ventanas de la App           ✅
+        │
+        ├── menu_view.py
+        ├── ambiente_view.py
+        ├── consumo_view.py
+        ├── cargar_consumo_view.py     📌
+        ├── boton_volver.py
+        ├── comparar_equipos_view.py
+        
+
+
+📌 - Cambiar /menu por /home    ✅
+
+📌 - Ventana emergente de seleccionar provincia ✅
+
+
+📌 - Al seleccionar provincia guardarla en una variable para los coeficientes de impuestos  ✅
+      Crear una Clase (Session) para manejar el calculo de la energia mensual
+      Traer de la BD la tarifa los impuestos correspondientes          
+
+📌 - Agregar tarjeta el equipo en cargar_consumo_view.py ✅
+
+
+📌 - Crear la lista de equipos para agregar a la base de datos
+     - cocina (lampara, cocina, ) Lista de diccionarios o tuplas, con valor promedio
+     - baño ()
+     - lavadero ()
+     - living ()
+     - piezas ()
+     - varios ()
+
+
+📌 - Boton volver que sea cambiar ambiente en las ventana de equipos ✅
+      Agregar un boton de calcular o finalizar ✅
+
+📌 - Agregar en equipos o en algunos equipo un icono de informacion o consejos
+      Con una ventana de alerta 
+      Tendria que ser un campo de la BD
+
+📌 - Mostrar abajo un contenedor con el acumulado actualizado en todo momento  kwh/mes 
+     desde selecionar ambiente 
+     condicional que total es 0 no lo muestre  ✅
+
+
+📌 - 1 Seleccionar calculadora
+   - 2 seleccionar ambiente
+   - 3  a. Agregar otro equipo al ambiente 
+        b. cambiar de ambiente  
+        c. Ver resultados
+
+   - 4. cada equipo agregado se muestra una tarjeta con: ✅
+         - Nombre (Ambiente)   -  x kwh/mes    
+
+   - Agregar en la clase para agregra a la lista de consumo el ambiente  ✅  
+   - El contenedor del listado de equipos sea fijo y se agregar un scrool si son muchos  ✅
+
+
+
+📌 - Tabla en la BD con escalones tarifarios, y los cargos fijos. Porcentajes de provincias    
+
+📌 - En la lista de tarjetas de consumos cambiar colores ✅
+
+
+
+
+git init
+git remote add origin https://github.com/SebastianGallego/App-Energia
+
+git add .
+git commit -m "First clean commit"
+
+
+git branch -M main
+git push -u origin main
