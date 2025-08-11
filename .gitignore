@@ -1,0 +1,8 @@
+# Ignorar claves, tokens, backups y entornos
+*.json, 
+credenciales.json, 
+.env, 
+serviceAccountKey*.json
+*.zip
+__pycache__/
+entornoNuevo/
